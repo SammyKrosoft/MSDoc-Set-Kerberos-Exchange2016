@@ -1,4 +1,4 @@
-# MSDoc-Set-Kerberos-Exchange2016
+# Microsoft Documentation - Set Kerberos for Load Balanced Exchange 2016 Client Access Services
 
 ## Introduction
 This is an Excel spreadsheet intended to help in setting Kerberos for Exchange CAS service.
