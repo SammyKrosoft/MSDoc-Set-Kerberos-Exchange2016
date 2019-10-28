@@ -28,7 +28,7 @@ The official Microsoft Documentation is here:
 |4|Script (Set)|.\RollAlternateServiceAccountPassword.ps1 -ToSpecificServer server1.contoso.ca -GenerateNewPasswordFor ESDC\Exchange2016ASA$|
 |5|Script (Set)|.\RollAlternateServiceAccountPassword.ps1 -ToSpecificServer server2.contoso.ca -copyfrom server1.contoso.ca|
 |6|Script (Set)|"#Optional, to configure Kerberos on all servers at once <br>$E2016 = Get-ExchangeServer \| ? {$_.AdminDisplayVersion -like ""*15.1*""}"|
-|7|--- Script (Set)|followup	"#And then: <br>$E2016 | Foreach {.\RollAlternateServiceAccountPassword.ps1 -ToSpecificServer ""$($_.Name).$($_.Domain)"" -copyfrom server1.contoso.ca}"|
+|7|--- Script (Set)|followup	"#And then: <br>$E2016 \| Foreach {.\RollAlternateServiceAccountPassword.ps1 -ToSpecificServer ""$($_.Name).$($_.Domain)"" -copyfrom server1.contoso.ca}"|
 |8|Script (Check)|Get-ClientAccessServer server1.contoso.ca -IncludeAlternateServiceAccountCredentialStatus \| Format-List Name, AlternateServiceAccountConfiguration|
 |9|Script (Check)|get-ExchangeServer \| ? {$_.AdminDisplayVersion -like "*15.1*"} \| Get-ClientAccessService -IncludeAlternateServiceAccountCredentialStatus \| Format-List Name, AlternateServiceAccountConfiguration|
 |10|setspn (Check)|setspn -F -Q http/mail.contoso.ca|
