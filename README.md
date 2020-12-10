@@ -25,7 +25,7 @@ The official Microsoft Documentation is here:
 |1|New-ADComputer|New-ADComputer -Name Exchange2016ASA -AccountPassword (Read-Host 'Enter password' -AsSecureString) -Description 'Alternate Service Account credentials for Exchange do not delete' -Enabled:$True -SamAccountName Exchange2016ASA|
 |2|Set-ADComputer|Set-ADComputer Exchange2016ASA -add @{"msDS-SupportedEncryptionTypes"="28"}|
 |3|cd|cd $exscripts|
-|4|Script (Set)|.\RollAlternateServiceAccountPassword.ps1 -ToSpecificServer server1.contoso.ca -GenerateNewPasswordFor ESDC\Exchange2016ASA$|
+|4|Script (Set)|.\RollAlternateServiceAccountPassword.ps1 -ToSpecificServer server1.contoso.ca -GenerateNewPasswordFor CONTOSO\Exchange2016ASA$|
 |5|Script (Set)|.\RollAlternateServiceAccountPassword.ps1 -ToSpecificServer server2.contoso.ca -copyfrom server1.contoso.ca|
 |6|Script (Set)|"#Optional, to configure Kerberos on all servers at once <br>$E2016 = Get-ExchangeServer \| ? {$_.AdminDisplayVersion -like ""*15.1*""}"|
 |7|--- Script (Set) followup|"#And then: <br>$E2016 \| Foreach {.\RollAlternateServiceAccountPassword.ps1 -ToSpecificServer ""$($_.Name).$($_.Domain)"" -copyfrom server1.contoso.ca}"|
